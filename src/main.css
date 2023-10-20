@@ -1,0 +1,87 @@
+@import 'prismjs/themes/prism.css';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --brand-color: rgb(215, 20, 50);
+  --font-mono: 'Fira Mono', monospace;
+  --pure-white: #ffffff;
+  --primary-color: #b9c6d2;
+  --secondary-color: #d0dde9;
+  --tertiary-color: #edf0f8;
+  --heading-color: rgba(0, 0, 0, 0.7);
+  --text-color: #444444;
+  --background-without-opacity: rgba(255, 255, 255, 0.7);
+  --column-width: 42rem;
+  --column-margin-top: 4rem;
+
+  accent-color: var(--brand-color);
+  text-underline-offset: 2px;
+}
+
+a {
+  color: royalblue;
+  text-decoration: underline;
+}
+
+nav a {
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+a:visited {
+  color: indigo;
+}
+a:hover {
+  color: red;
+}
+a:active {
+  color: indigo;
+}
+nav a:visited {
+  color: inherit;
+}
+
+body,
+html {
+  height: 100%;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+.brand {
+  color: var(--brand-color);
+}
+
+.heading {
+  @apply font-bold;
+}
+
+:is(h1),
+.h1 {
+  @apply text-3xl mb-4;
+}
+
+:is(h2),
+.h2 {
+  @apply text-2xl mb-4;
+}
+
+:is(h3),
+.h3 {
+  @apply text-xl mb-4;
+}
+
+code {
+  @apply rounded-md;
+}
+
+pre + .caption,
+code + .caption,
+img + .caption {
+  @apply mt-1 mb-8 text-gray-700 text-right !text-sm;
+}
