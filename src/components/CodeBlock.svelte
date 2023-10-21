@@ -21,7 +21,7 @@
   {@html atomOneDark}
 </svelte:head>
 
-<div class="my-16">
+<div>
   <Highlight language={selectedLanguage} {code} class="mb-0" />
 
   {#if caption}
