@@ -15,6 +15,8 @@
   export let language
 
   $: selectedLanguage = languages[language] || typescript
+
+  $: code = code.replace(/\t/g, '  ')
 </script>
 
 <svelte:head>
