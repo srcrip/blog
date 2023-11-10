@@ -6,6 +6,7 @@
   import Title from './Title.svelte'
   import Heading from './Heading.svelte'
   import RichText from './RichText.svelte'
+  import Quote from './Quote.svelte'
   import TagList from './TagList.svelte'
   import People from './People.svelte'
   import Paragraph from './Paragraph.svelte'
@@ -44,6 +45,8 @@
     <CodeBlock {code} {language} {caption}>{code}</CodeBlock>
   {:else if block.type === 'divider'}
     <hr />
+  {:else if block.type === 'quote'}
+    <Quote block={block.quote.text} />
   {:else if block.type === 'callout'}
     <div class="flex gap-2 border bg-gray-100 rounded-md place-items-center px-2">
       <div class="text-xl w-[3em] h-[3em] grid place-content-center">

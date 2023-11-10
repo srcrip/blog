@@ -35,6 +35,8 @@
       console.error('Failed to copy: ', error)
     }
   }
+
+  $: code = code.replace(/\t/g, '  ')
 </script>
 
 <svelte:head>
