@@ -27,17 +27,19 @@
   {#if summary}
     <p class="text-gray-600">{summary}</p>
   {/if}
-  <p class="text-sm mt-8">
-    originally published <sl-relative-time date={published_on}
-      >{published_on}</sl-relative-time
-    >
-  </p>
+  {#if page.properties['Published On']?.date?.start}
+    <p class="text-sm mt-8">
+      originally published <sl-relative-time date={published_on}>
+        {published_on}
+      </sl-relative-time>
+    </p>
+  {/if}
   <!-- last updated -->
   {#if last_updated && updateDiffDays >= 1}
     <p class="text-sm mb-8">
-      last updated <sl-relative-time date={last_updated}
-        >{last_updated}</sl-relative-time
-      >
+      last updated <sl-relative-time date={last_updated}>
+        {last_updated}
+      </sl-relative-time>
     </p>
   {/if}
   <!-- Content -->
@@ -53,12 +55,15 @@
     <h2 class="m-0 text-lg text-zinc-600">
       Like my content? Follow me on <a
         href="https://twitter.com/0xGOATMILK"
-        class="text-blue-900">Twitter</a
+        class="text-blue-900"
       >
+        Twitter
+      </a>
       and
-      <a href="https://github.com/sevensidedmarble" class="text-blue-900"
-        >GitHub</a
-      >!
+      <a href="https://github.com/sevensidedmarble" class="text-blue-900">
+        GitHub
+      </a>
+      !
     </h2>
   </footer>
 </div>

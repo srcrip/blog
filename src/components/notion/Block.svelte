@@ -58,8 +58,11 @@
       </p>
     </div>
   {:else if block.type === 'embed'}
-    <img class="mx-auto border rounded" src={block.embed.url} alt={block.embed?.caption[0]?.plain_text} />
+    <img class="mx-auto border rounded-md" src={block.embed.url} alt={block.embed?.caption[0]?.plain_text} />
     <p class="caption">{block.embed?.caption[0]?.plain_text}</p>
+  {:else if block.type === 'image'}
+    <img class="mx-auto border rounded-md" src={block.image.external.url} alt={block.image?.caption[0]?.plain_text} />
+    <p class="caption">{block.image?.caption[0]?.plain_text}</p>
   {:else}
     <!-- Type that needs to be added -->
     <pre><code>{JSON.stringify(block, null, 2)}</code></pre>
