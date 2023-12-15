@@ -9,10 +9,6 @@ import {
 import { writeFile, mkdir } from 'fs'
 import { rm } from 'fs/promises'
 
-async function sleep(ms) {
-  return new Promise((resolve) => setTimeout(resolve, ms))
-}
-
 async function writeJsonFile(name, content) {
   mkdir('./tmp', { recursive: true }, (err) => {
     if (err) throw err
@@ -45,11 +41,10 @@ async function getBlogContent() {
     const page = getAsSensiblyStructuredBlocks(getSupportedBlocks(result))
 
     if (result && result.length > 0) {
-      const slugOrId = properties?.["Slug"]?.["rich_text"]?.[0]?.["plain_text"] ?? id
+      const slugOrId =
+        properties?.['Slug']?.['rich_text']?.[0]?.['plain_text'] ?? id
 
-      // adjustable sleep for lazy rate limiting
       writeJsonFile(slugOrId, page)
-      await sleep(1)
     } else {
       skipPages.push(id)
     }
