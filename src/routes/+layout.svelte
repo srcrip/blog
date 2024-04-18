@@ -20,11 +20,11 @@
       </li>
 
       <li class="block">
-        <a href="https://github.com/sevensidedmarble">github</a>
+        <a href="https://github.com/srcrip">github</a>
       </li>
 
       <li class="block">
-        <a href="https://twitter.com/0xGOATMILK">twitter</a>
+        <a href="https://twitter.com/src_rip">twitter</a>
       </li>
 
       <!--
