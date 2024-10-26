@@ -1,4 +1,4 @@
-@import 'prismjs/themes/prism.css';
+@import "prismjs/themes/prism.css";
 
 @tailwind base;
 @tailwind components;
@@ -6,7 +6,7 @@
 
 :root {
   --brand-color: rgb(215, 20, 50);
-  --font-mono: 'Fira Mono', monospace;
+  --font-mono: "Fira Mono", monospace;
   --pure-white: #ffffff;
   --primary-color: #b9c6d2;
   --secondary-color: #d0dde9;
@@ -29,19 +29,24 @@ a {
 nav a {
   text-decoration: none;
 }
+
 a:hover {
   text-decoration: underline;
   text-underline-offset: 3px;
 }
+
 a:visited {
   color: indigo;
 }
+
 a:hover {
   color: red;
 }
+
 a:active {
   color: indigo;
 }
+
 nav a:visited {
   color: inherit;
 }
@@ -80,8 +85,9 @@ code {
   @apply rounded-md;
 }
 
-pre + .caption,
-code + .caption,
-img + .caption {
+.caption,
+pre+.caption,
+code+.caption,
+img+.caption {
   @apply mt-1 mb-8 text-gray-700 text-right !text-sm;
 }

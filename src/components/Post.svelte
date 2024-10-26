@@ -13,8 +13,9 @@
   $: summary = page.properties['Summary'].rich_text[0]?.plain_text
   $: published_on = new Date(page.properties['Published On']?.date?.start)
   $: last_updated = new Date(
-    page.properties['Last Updated On']?.date?.start ?? published_on
+    page.properties['Last edited time']?.date?.start ?? published_on
   )
+  $: console.log(last_updated)
   $: updateDiffDays = Math.ceil(
     Math.abs(last_updated.valueOf() - published_on.valueOf()) /
       (1000 * 60 * 60 * 24)
@@ -54,13 +55,13 @@
   <footer class="border rounded-md bg-zinc-100 px-8 py-12 mt-12">
     <h2 class="m-0 text-lg text-zinc-600">
       Like my content? Follow me on <a
-        href="https://twitter.com/0xGOATMILK"
+        href="https://twitter.com/src_rip"
         class="text-blue-900"
       >
         Twitter
       </a>
       and
-      <a href="https://github.com/sevensidedmarble" class="text-blue-900">
+      <a href="https://github.com/srcrip" class="text-blue-900">
         GitHub
       </a>
       !

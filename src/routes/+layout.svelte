@@ -20,24 +20,12 @@
       </li>
 
       <li class="block">
-        <a href="https://github.com/sevensidedmarble">github</a>
+        <a href="https://github.com/srcrip">github</a>
       </li>
 
       <li class="block">
-        <a href="https://twitter.com/0xGOATMILK">twitter</a>
+        <a href="https://twitter.com/src_rip">twitter</a>
       </li>
-
-      <!--
-      <li class="block">
-        <a href="https://GitHubgithub.com/sevensidedmarble">Consulting</a>
-      </li>
-      <li class="block">
-        <a href="https://GitHubgithub.com/sevensidedmarble">Resume</a>
-      </li>
-      <li class="block">
-        <a href="https://GitHubgithub.com/sevensidedmarble">Contact</a>
-      </li>
-      -->
     </ul>
   </nav>
   <div class="flex-1 mt-4 sm:mt-12">
