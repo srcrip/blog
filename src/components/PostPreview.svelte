@@ -13,14 +13,11 @@
   export let id: string
 </script>
 
-<article>
-  <div class="flex flex-wrap place-content-between">
-    <a data-sveltekit-prefetch href={`/blog/${id}`} class="text-blue-900 underline mr-4">
-      <Block block={props.Name} />
-    </a>
-    <div class="mb-4 mt-3 self-end">
-      <Block block={props.Tags} />
-    </div>
+<article class="mb-4">
+  <a data-sveltekit-prefetch href={`/blog/${id}`} class="post-title">
+    <Block block={props.Name} />
+  </a>
+  <div class="post-summary">
+    <Block block={props.Summary} />
   </div>
-  <Block block={props.Summary} />
 </article>

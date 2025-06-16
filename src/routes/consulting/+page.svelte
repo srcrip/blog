@@ -4,7 +4,7 @@
 
 <SvelteSeo title="blog.src.rip" description="a programming blog about elixir, phoenix, and other things" />
 
-<article class="prose prose-lg mb-4 max-w-screen-md mx-auto">
+<article class="prose prose-lg mb-4 max-w-3xl mx-auto">
   <h1 class="xl:text-center mb-2 mt-12 text-3xl font-semibold">Consulting</h1>
 
   <p class="">
@@ -29,7 +29,7 @@
   </ul>
 </article>
 
-<div class="mb-4 max-w-screen-md mx-auto">
+<div class="mb-4 max-w-3xl mx-auto">
   <footer class="border rounded-md bg-zinc-100 px-8 py-12 mt-12">
     <h2 class="m-0 text-lg text-zinc-600">
       Have questions? <a

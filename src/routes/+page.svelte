@@ -9,7 +9,7 @@
 
 <SvelteSeo title="blog.src.rip" description="a programming blog about elixir, phoenix, and other things" />
 
-<section class="space-y-4">
+<section class="space-y-6">
   {#each data.pages as notionItem}
     <PostPreview id={slugOrId(notionItem)} props={notionItem.properties} />
   {/each}

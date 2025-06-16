@@ -6,8 +6,8 @@
   export let block: Array<TagBlock>
 </script>
 
-<ul class="list-none inline-flex gap-2">
-  {#each block as blockItem}
-    <li data-id={blockItem.id} class="text-xs bg-gray-100 px-2 py-1 rounded no-underline">{blockItem.name}</li>
+<span class="text-xs text-black">
+  {#each block as blockItem, i}
+    {blockItem.name}{#if i < block.length - 1}, {/if}
   {/each}
-</ul>
+</span>
