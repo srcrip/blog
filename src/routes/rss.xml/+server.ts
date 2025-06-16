@@ -5,15 +5,10 @@ export const prerender = true
 
 export const GET: RequestHandler = async () => {
   const { default: database } = await import('../../../tmp/database.json')
-
-  console.log('Total pages:', database.length)
-  console.log('First page properties:', database[0]?.properties)
   
   const publishedPages = database.filter(
     page => page.properties?.Published?.checkbox === true
   )
-  
-  console.log('Published pages:', publishedPages.length)
 
   const siteUrl = "https://blog.src.rip"
   const blogTitle = "src.rip"

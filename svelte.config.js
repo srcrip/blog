@@ -18,6 +18,7 @@ const getEntries = async () => {
 
   return [
     '/',
+    '/rss.xml',
     ...database.map((page) => {
       return `/blog/${page.id}`
     })
