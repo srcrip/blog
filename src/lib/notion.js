@@ -1,6 +1,6 @@
-import { Client } from '@notionhq/client'
+import { Client } from "@notionhq/client"
 // import { appConfig } from './config'
-import dotenv from 'dotenv'
+import dotenv from "dotenv"
 
 // Make sure the environment variables are loaded into node.
 dotenv.config()
@@ -11,10 +11,10 @@ const appConfig = {
     databaseId: String(process.env.NOTION_DATABASE_ID)
   },
   properties: {
-    title: 'title',
-    summary: 'summary',
-    tags: 'tags',
-    published: 'published'
+    title: "title",
+    summary: "summary",
+    tags: "tags",
+    published: "published"
   }
 }
 
@@ -32,10 +32,10 @@ export const getDatabase = async (databaseId = notionDatabaseId) => {
   return results
 }
 
-export const getPage = async (pageId) =>
+export const getPage = async pageId =>
   await notionClient.pages.retrieve({ page_id: pageId })
 
-export const getBlocks = async (blockId) => {
+export const getBlocks = async blockId => {
   const { results } = await notionClient.blocks.children.list({
     block_id: blockId
   })
@@ -43,18 +43,18 @@ export const getBlocks = async (blockId) => {
 }
 
 export async function getAllBlocks(notebookId) {
-  const maxTries = 5;
+  const maxTries = 5
   const listChildren = async (cursor = undefined, accumulatedBlocks = []) => {
     const response = await notionClient.blocks.children.list({
       block_id: notebookId,
       page_size: 100,
-      start_cursor: cursor,
-    });
+      start_cursor: cursor
+    })
 
-    const blocks = [...accumulatedBlocks, ...response.results];
+    const blocks = [...accumulatedBlocks, ...response.results]
 
     if (!response.next_cursor) {
-      return blocks;
+      return blocks
     }
 
     const newBlocks = retryFn(
@@ -62,15 +62,12 @@ export async function getAllBlocks(notebookId) {
       maxTries
     )
 
-    return newBlocks;
+    return newBlocks
   }
 
-  const blocks = await retryFn(
-    () => listChildren(),
-    maxTries
-  )
+  const blocks = await retryFn(() => listChildren(), maxTries)
 
-  return blocks;
+  return blocks
 }
 
 export async function retryFn(fn, maxTries, ...args) {
@@ -79,7 +76,7 @@ export async function retryFn(fn, maxTries, ...args) {
     try {
       return fn(...args)
     } catch (e) {
-      const waitTime = 500 * 2 ** tries
+      const waitTime = 100 * 2 ** tries
       await sleep(waitTime)
       tries += 1
     }
@@ -87,33 +84,31 @@ export async function retryFn(fn, maxTries, ...args) {
 }
 
 async function sleep(ms) {
-  return new Promise((resolve) => setTimeout(resolve, ms))
+  return new Promise(resolve => setTimeout(resolve, ms))
 }
 
-export const isEmptyParagraph = (block) =>
-  block.type === 'paragraph' &&
+export const isEmptyParagraph = block =>
+  block.type === "paragraph" &&
   block.paragraph.text &&
   block.paragraph.text.length === 0
 
-export const getSupportedBlocks = (result) =>
-  result.filter((block) => block.type !== 'unsupported')
+export const getSupportedBlocks = result =>
+  result.filter(block => block.type !== "unsupported")
 
-export const getNonEmptyParagraphs = (result) =>
-  result.filter(
-    (block) => block.type !== 'paragraph' || !isEmptyParagraph(block)
-  )
+export const getNonEmptyParagraphs = result =>
+  result.filter(block => block.type !== "paragraph" || !isEmptyParagraph(block))
 
 export const notionConfig = {
   couldBeNonSequencedTypes: [
-    'toggle',
-    'to_do',
-    'bulleted_list_item',
-    'numbered_list_item'
+    "toggle",
+    "to_do",
+    "bulleted_list_item",
+    "numbered_list_item"
   ]
 }
 
 // the very same result, with consideration of blocks that make sense as siblings under one root block/first sibling, rather than independent blocks. The blocks that are indentified as siblings, their index gets eaten up, and they get added to the first of their type as siblings.
-export const getAsSensiblyStructuredBlocks = (result) => {
+export const getAsSensiblyStructuredBlocks = result => {
   const ret = [result[0]]
   for (let blockIndex = 1; blockIndex < result.length; blockIndex++) {
     if (
