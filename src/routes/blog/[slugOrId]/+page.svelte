@@ -5,7 +5,7 @@
 
   export let data: PageData
 
-  const fallbackTitle = "andrewian.dev"
+  const fallbackTitle = "blog.src.rip"
   const fallbackDescription = "My development blog"
 
   $: title = data?.page?.properties?.Name?.title[0]?.plain_text || fallbackTitle
@@ -14,7 +14,7 @@
 </script>
 
 <SvelteSeo
-  title="andrewian.dev - {title}"
+  title="blog.src.rip - {title}"
   description={summary}
   />
 

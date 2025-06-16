@@ -5,7 +5,7 @@
 <div class="px-4 grow max-w-screen-lg container mx-auto">
   <nav class="mt-8 flex flex-wrap gap-2">
     <h1 class="grow text-lg font-semibold">
-      <a href="/">andrewian.dev</a>
+      <a href="/">blog.src.rip</a>
       <div class="font-medium text-gray-600">
         a blog about elixir, svelte, accessibility, and more
       </div>

@@ -7,7 +7,7 @@
   export let data: PageData
 </script>
 
-<SvelteSeo title="andrewian.dev" description="a technology blog" />
+<SvelteSeo title="blog.src.rip" description="a programming blog about elixir, phoenix, and other things" />
 
 <section class="space-y-4">
   {#each data.pages as notionItem}

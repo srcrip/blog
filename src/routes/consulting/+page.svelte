@@ -2,7 +2,7 @@
   import SvelteSeo from 'svelte-seo'
 </script>
 
-<SvelteSeo title="andrewian.dev" description="a technology blog" />
+<SvelteSeo title="blog.src.rip" description="a programming blog about elixir, phoenix, and other things" />
 
 <article class="prose prose-lg mb-4 max-w-screen-md mx-auto">
   <h1 class="xl:text-center mb-2 mt-12 text-3xl font-semibold">Consulting</h1>

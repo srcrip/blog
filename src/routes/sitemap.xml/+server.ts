@@ -3,7 +3,7 @@ import { getPages } from '../../utils'
 
 const data = await getPages()
 
-const site = "https://andrewian.dev"
+const site = "https://blog.src.rip"
 
 const getPaths = () => {
   return data.map((post) => {
