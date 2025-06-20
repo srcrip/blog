@@ -9,14 +9,18 @@ module.exports = {
   extends: [
     'standard-with-typescript',
     'eslint:recommended',
-    'plugin:@typescript-eslint/recommended'
+    'plugin:@typescript-eslint/recommended',
+    'plugin:svelte/recommended'
   ],
-  plugins: ['svelte3', '@typescript-eslint'],
+  plugins: ['@typescript-eslint'],
   ignorePatterns: ['*.cjs'],
   overrides: [
     {
       files: ['*.svelte'],
-      processor: 'svelte3/svelte3'
+      parser: 'svelte-eslint-parser',
+      parserOptions: {
+        parser: '@typescript-eslint/parser'
+      }
     },
     // Disable no-undef for TS files
     {
@@ -28,12 +32,15 @@ module.exports = {
     },
   ],
   settings: {
-    'svelte3/typescript': () => require('typescript')
+    'svelte': {
+      'typescript': () => require('typescript')
+    }
   },
   parserOptions: {
     project: './tsconfig.json',
     sourceType: 'module',
-    ecmaVersion: 'latest'
+    ecmaVersion: 'latest',
+    extraFileExtensions: ['.svelte']
   },
   rules: {
     'no-cond-assign': ['error', 'except-parens'],

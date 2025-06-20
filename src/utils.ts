@@ -1,12 +1,12 @@
 export const slugOrId = (page: any) => {
-  return extractRichText(page?.properties?.["Slug"]) ?? page.id
+  return extractRichText(page?.properties?.Slug) ?? page.id
 }
 
 export const extractRichText = (property: any) => {
   if (!property) {
-    return
+
   } else {
-    return property["rich_text"]?.[0]?.["plain_text"]
+    return property.rich_text?.[0]?.plain_text
   }
 }
 
@@ -17,7 +17,7 @@ export const getPages = async () => {
     const slugs = new Set()
     if (
       data.some((post) => {
-        const slug = extractRichText(post.properties["Slug"])
+        const slug = extractRichText(post.properties.Slug)
 
         if (!slug) {
           return false

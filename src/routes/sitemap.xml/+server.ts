@@ -3,19 +3,19 @@ import { getPages } from '../../utils'
 
 const data = await getPages()
 
-const site = "https://blog.src.rip"
+const site = 'https://blog.src.rip'
 
 const getPaths = () => {
-  return data.map((post) => {
+  return data?.map((post) => {
     return {
       path: `/blog/${post.id}`
     }
-  })
+  }) ?? []
 }
 
 const posts = [
-  { path: "/" },
-  { path: "/consulting" },
+  { path: '/' },
+  { path: '/consulting' },
   ...getPaths()
 ]
 
@@ -35,13 +35,13 @@ export const GET: RequestHandler = async () => {
       </url>
       `
         )
-        .join("")}
+        .join('')}
 
     </urlset>
   `.trim(),
     {
       headers: {
-        "Content-Type": "application/xml",
+        'Content-Type': 'application/xml'
       }
     }
   )

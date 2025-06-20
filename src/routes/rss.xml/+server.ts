@@ -1,24 +1,24 @@
-import type { RequestHandler } from "./$types"
-import { extractRichText, slugOrId } from "../../utils"
+import type { RequestHandler } from './$types'
+import { extractRichText, slugOrId } from '../../utils'
 
 export const prerender = true
 
 export const GET: RequestHandler = async () => {
   const { default: database } = await import('../../../tmp/database.json')
-  
+
   const publishedPages = database.filter(
-    page => page.properties?.Published?.checkbox === true
+    page => page.properties?.Published?.checkbox
   )
 
-  const siteUrl = "https://blog.src.rip"
-  const blogTitle = "src.rip"
-  const blogDescription = "Thoughts on software engineering and technology"
-  
+  const siteUrl = 'https://blog.src.rip'
+  const blogTitle = 'src.rip'
+  const blogDescription = 'Thoughts on software engineering and technology'
+
   const rssItems = publishedPages
     .sort((a, b) => new Date(b.last_edited_time).getTime() - new Date(a.last_edited_time).getTime())
     .map(page => {
-      const title = page.properties?.Name?.title?.[0]?.plain_text || "Untitled"
-      const summary = extractRichText(page.properties?.Summary) || ""
+      const title = page.properties?.Name?.title?.[0]?.plain_text || 'Untitled'
+      const summary = extractRichText(page.properties?.Summary) || ''
       const slug = slugOrId(page)
       const pubDate = new Date(page.last_edited_time).toUTCString()
       const link = `${siteUrl}/blog/${slug}`
@@ -32,7 +32,7 @@ export const GET: RequestHandler = async () => {
       <pubDate>${pubDate}</pubDate>
     </item>`
     })
-    .join("")
+    .join('')
 
   const rss = `<?xml version="1.0" encoding="UTF-8"?>
 <?xml-stylesheet type="text/xsl" href="/rss.xsl"?>
@@ -50,9 +50,8 @@ export const GET: RequestHandler = async () => {
 
   return new Response(rss, {
     headers: {
-      "Content-Type": "application/rss+xml; charset=utf-8",
-      "Cache-Control": "max-age=0, s-maxage=3600"
+      'Content-Type': 'application/rss+xml; charset=utf-8',
+      'Cache-Control': 'max-age=0, s-maxage=3600'
     }
   })
 }
-

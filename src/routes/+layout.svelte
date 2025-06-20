@@ -19,9 +19,8 @@
       <a href="/rss.xml" class="mr-4">rss</a>
     </nav>
   </header>
-  
+
   <main>
     <slot />
   </main>
 </div>
-

@@ -9,8 +9,8 @@
   export let blocks: Array<NotionBlock>
   export let page: any
 
-  $: title = page.properties['Name']?.title[0]?.plain_text
-  $: summary = page.properties['Summary'].rich_text[0]?.plain_text
+  $: title = page.properties.Name?.title[0]?.plain_text
+  $: summary = page.properties.Summary.rich_text[0]?.plain_text
   $: published_on = new Date(page.properties['Published On']?.date?.start)
   $: last_updated = new Date(
     page.properties['Last edited time']?.date?.start ?? published_on
@@ -36,12 +36,10 @@
       {/if}
     </div>
   </header>
-  
+
   <main>
     {#each blocks as prop}
       <Block block={prop} />
     {/each}
   </main>
 </article>
-
-

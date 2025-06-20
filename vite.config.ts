@@ -1,9 +1,8 @@
 import { sveltekit } from '@sveltejs/kit/vite'
-import { reload } from './blog.js'
 
 const hmrWatch = {
   name: 'watch-content',
-  handleHotUpdate(ctx) {
+  handleHotUpdate (ctx) {
     console.log('HMR: Fetching Notion pages...')
 
     // reload(false)

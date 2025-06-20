@@ -5,8 +5,8 @@
 
   export let data: PageData
 
-  const fallbackTitle = "blog.src.rip"
-  const fallbackDescription = "My development blog"
+  const fallbackTitle = 'blog.src.rip'
+  const fallbackDescription = 'My development blog'
 
   $: title = data?.page?.properties?.Name?.title[0]?.plain_text || fallbackTitle
   $: summary = data?.page?.properties?.Summary?.rich_text[0]?.plain_text || fallbackDescription

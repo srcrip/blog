@@ -1,6 +1,6 @@
-import { Client } from "@notionhq/client"
+import { Client } from '@notionhq/client'
 // import { appConfig } from './config'
-import dotenv from "dotenv"
+import dotenv from 'dotenv'
 
 // Make sure the environment variables are loaded into node.
 dotenv.config()
@@ -11,10 +11,10 @@ const appConfig = {
     databaseId: String(process.env.NOTION_DATABASE_ID)
   },
   properties: {
-    title: "title",
-    summary: "summary",
-    tags: "tags",
-    published: "published"
+    title: 'title',
+    summary: 'summary',
+    tags: 'tags',
+    published: 'published'
   }
 }
 
@@ -42,7 +42,7 @@ export const getBlocks = async blockId => {
   return results
 }
 
-export async function getAllBlocks(notebookId) {
+export async function getAllBlocks (notebookId) {
   const maxTries = 5
   const listChildren = async (cursor = undefined, accumulatedBlocks = []) => {
     const response = await notionClient.blocks.children.list({
@@ -70,7 +70,7 @@ export async function getAllBlocks(notebookId) {
   return blocks
 }
 
-export async function retryFn(fn, maxTries, ...args) {
+export async function retryFn (fn, maxTries, ...args) {
   let tries = 0
   while (tries <= maxTries) {
     try {
@@ -83,27 +83,27 @@ export async function retryFn(fn, maxTries, ...args) {
   }
 }
 
-async function sleep(ms) {
+async function sleep (ms) {
   return new Promise(resolve => setTimeout(resolve, ms))
 }
 
 export const isEmptyParagraph = block =>
-  block.type === "paragraph" &&
+  block.type === 'paragraph' &&
   block.paragraph.text &&
   block.paragraph.text.length === 0
 
 export const getSupportedBlocks = result =>
-  result.filter(block => block.type !== "unsupported")
+  result.filter(block => block.type !== 'unsupported')
 
 export const getNonEmptyParagraphs = result =>
-  result.filter(block => block.type !== "paragraph" || !isEmptyParagraph(block))
+  result.filter(block => block.type !== 'paragraph' || !isEmptyParagraph(block))
 
 export const notionConfig = {
   couldBeNonSequencedTypes: [
-    "toggle",
-    "to_do",
-    "bulleted_list_item",
-    "numbered_list_item"
+    'toggle',
+    'to_do',
+    'bulleted_list_item',
+    'numbered_list_item'
   ]
 }
 

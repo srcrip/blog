@@ -21,7 +21,7 @@ export const load: PageServerLoad = async ({ params }) => {
   const { default: database } = await import('../../../../tmp/database.json')
 
   for (const page of database) {
-    const slug = extractRichText(page.properties?.["Slug"])
+    const slug = extractRichText(page.properties?.Slug)
 
     // try to load by slug
     if (slug === slugOrId) {

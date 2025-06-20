@@ -5,22 +5,22 @@ import {
   getAllBlocks,
   getSupportedBlocks,
   getAsSensiblyStructuredBlocks
-} from "./src/lib/notion.js"
-import { writeFile, mkdir } from "fs"
-import { rm } from "fs/promises"
+} from './src/lib/notion.js'
+import { writeFile, mkdir } from 'fs'
+import { rm } from 'fs/promises'
 
-async function writeJsonFile(name, content) {
-  mkdir("./tmp", { recursive: true }, err => {
-    if (err) throw err
+async function writeJsonFile (name, content) {
+  mkdir('./tmp', { recursive: true }, err => {
+    if (err != null) throw err
   })
 
   writeFile(`./tmp/${name}.json`, JSON.stringify(content), err => {
-    if (err) throw err
+    if (err != null) throw err
     console.log(`${name} has been saved!`)
   })
 }
 
-async function getBlogContent() {
+async function getBlogContent () {
   const database: any = await getDatabase().catch(err => {
     if (err) throw err
   })
@@ -42,7 +42,7 @@ async function getBlogContent() {
 
     if (result && result.length > 0) {
       const slugOrId =
-        properties?.["Slug"]?.["rich_text"]?.[0]?.["plain_text"] ?? id
+        properties?.Slug?.rich_text?.[0]?.plain_text ?? id
 
       writeJsonFile(slugOrId, page)
     } else {
@@ -51,17 +51,17 @@ async function getBlogContent() {
   }
 
   writeJsonFile(
-    "database",
+    'database',
     database.filter(x => !skipPages.includes(x.id))
   )
 
   return database
 }
 
-export async function loadBlog() {
-  console.log("clearing tmp folder")
+export async function loadBlog () {
+  console.log('clearing tmp folder')
 
-  await rm("./tmp", { force: true, recursive: true })
+  await rm('./tmp', { force: true, recursive: true })
 
-  return getBlogContent()
+  return await getBlogContent()
 }

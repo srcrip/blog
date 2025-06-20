@@ -7,9 +7,9 @@
   import typescript from 'svelte-highlight/languages/typescript'
   import elixir from 'svelte-highlight/languages/elixir'
 
-  let languages = {
-    typescript: typescript,
-    elixir: elixir
+  const languages = {
+    typescript,
+    elixir
   }
 
   export let code
@@ -20,7 +20,7 @@
 
   let copyText = 'Copy'
 
-  async function clickToCopy() {
+  async function clickToCopy () {
     try {
       await navigator.clipboard.writeText(code)
 
