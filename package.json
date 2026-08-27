@@ -44,7 +44,7 @@
   "dependencies": {
     "@notionhq/client": "^0.4.12",
     "@sveltejs/adapter-static": "^2.0.2",
-    "cookie": "^0.4.1",
+    "cookie": "^2.0.1",
     "prismjs": "^1.29.0",
     "svelte-seo": "~1.6.1"
   }
