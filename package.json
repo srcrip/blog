@@ -7,11 +7,11 @@
     "package": "svelte-kit package",
     "preview": "vite preview",
     "test": "playwright test",
-    "load": "svelte-kit sync && npx node --experimental-specifier-resolution=node --loader ts-node/esm load-blog.js",
-    "prebuild": "npm run load",
+    "load": "svelte-kit sync && bun run load-blog.js",
+    "prebuild": "bun run load",
     "check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
     "check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
-    "format": "npx prettier . -w -u",
+    "format": "prettier . -w -u",
     "lint": "eslint ."
   },
   "devDependencies": {
@@ -30,11 +30,11 @@
     "eslint-plugin-promise": "^6.1.1",
     "eslint-plugin-svelte": "^2.30.0",
     "postcss": "^8.4.16",
+    "prettier": "^3.0.3",
     "svelte": "^3.59.2",
     "svelte-check": "^3.4.3",
-    "svelte-highlight": "^7.3.0",
+    "svelte-highlight": "~7.12.0",
     "svelte-preprocess": "^5.0.3",
-    "prettier": "^3.0.3",
     "tailwindcss": "^3.3.5",
     "tslib": "^2.3.1",
     "typescript": "^4.7.4",
@@ -45,10 +45,7 @@
     "@notionhq/client": "^0.4.12",
     "@sveltejs/adapter-static": "^2.0.2",
     "cookie": "^0.4.1",
-    "esno": "^0.16.3",
-    "node": "^19.0.0",
     "prismjs": "^1.29.0",
-    "svelte-seo": "^1.4.1",
-    "ts-node": "^10.9.1"
+    "svelte-seo": "~1.6.1"
   }
 }

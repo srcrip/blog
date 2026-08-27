@@ -5,8 +5,8 @@
 ## Developing
 
 ```bash
-npm install
-npm run dev
+bun install
+bun run dev
 ```
 
 ## Building / Preview
@@ -14,8 +14,8 @@ npm run dev
 To create a production version of your app:
 
 ```bash
-npm run build
+bun run build
 
 # To preview production version:
-npm run preview
+bun run preview
 ```
