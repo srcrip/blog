@@ -43,7 +43,7 @@
   "type": "module",
   "dependencies": {
     "@notionhq/client": "^0.4.12",
-    "@sveltejs/adapter-static": "^2.0.2",
+    "@sveltejs/adapter-static": "^3.0.10",
     "cookie": "^0.4.1",
     "prismjs": "^1.29.0",
     "svelte-seo": "~1.6.1"
