@@ -8,6 +8,7 @@
     "preview": "vite preview",
     "test": "playwright test",
     "load": "svelte-kit sync && bun run load-blog.js",
+    "load-drafts": "INCLUDE_DRAFTS=true bun run load",
     "prebuild": "bun run load",
     "check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
     "check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",

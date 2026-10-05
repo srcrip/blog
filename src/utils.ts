@@ -2,13 +2,16 @@ export const slugOrId = (page: any) => {
   return extractRichText(page?.properties?.Slug) ?? page.id
 }
 
-export const extractRichText = (property: any) => {
-  if (!property) {
+// Notion splits text into multiple segments wherever the formatting changes
+// (e.g. inline code), so join them all back together.
+const joinPlainText = (segments: any[] | undefined) =>
+  segments?.map(segment => segment.plain_text).join('') || undefined
 
-  } else {
-    return property.rich_text?.[0]?.plain_text
-  }
-}
+export const extractRichText = (property: any) =>
+  joinPlainText(property?.rich_text)
+
+export const extractTitle = (property: any) =>
+  joinPlainText(property?.title)
 
 export const getPages = async () => {
   try {

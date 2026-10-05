@@ -12,14 +12,10 @@
         class:strikethrough={blockItem.annotations.strikethrough}
         class:underline={blockItem.annotations.underline}
         class:code={blockItem.annotations.code}
-        class="{blockItem.annotations.color !== 'default' ? blockItem.annotations.color : ''} rich-text-item">
-    {#if blockItem.text.link}
-      <a href={blockItem.text.link.url} title={blockItem.text.content}>{blockItem.text.content}</a>
-    {:else}
-      {blockItem.text.content}
-    {/if}
-  </span>
-{/each}
+        class="{blockItem.annotations.color !== 'default' ? blockItem.annotations.color : ''} rich-text-item"
+  ><!-- Keep the contents on one line so Svelte doesn't add stray whitespace
+  -->{#if blockItem.text.link}<a href={blockItem.text.link.url} title={blockItem.text.content}>{blockItem.text.content}</a>{:else}{blockItem.text.content}{/if}</span
+>{/each}
 
 <style scoped>
   .code {

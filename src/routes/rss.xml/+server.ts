@@ -1,5 +1,5 @@
 import type { RequestHandler } from './$types'
-import { extractRichText, slugOrId } from '../../utils'
+import { extractRichText, extractTitle, slugOrId } from '../../utils'
 
 export const prerender = true
 
@@ -17,7 +17,7 @@ export const GET: RequestHandler = async () => {
   const rssItems = publishedPages
     .sort((a, b) => new Date(b.last_edited_time).getTime() - new Date(a.last_edited_time).getTime())
     .map(page => {
-      const title = page.properties?.Name?.title?.[0]?.plain_text || 'Untitled'
+      const title = extractTitle(page.properties?.Name) || 'Untitled'
       const summary = extractRichText(page.properties?.Summary) || ''
       const slug = slugOrId(page)
       const pubDate = new Date(page.last_edited_time).toUTCString()
