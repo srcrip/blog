@@ -34,6 +34,21 @@ function warnOnMissingProperties (id, properties) {
   }
 }
 
+// Block types whose nested child blocks should be fetched and rendered.
+const typesWithChildren = ['quote']
+
+async function loadChildren (blocks) {
+  for (const block of blocks ?? []) {
+    if (block.has_children && typesWithChildren.includes(block.type)) {
+      const children = await getAllBlocks(block.id)
+      block.children = getAsSensiblyStructuredBlocks(
+        getSupportedBlocks(await loadChildren(children))
+      )
+    }
+  }
+  return blocks
+}
+
 async function getBlogContent () {
   const database: any = await getDatabase().catch(err => {
     if (err) throw err
@@ -54,9 +69,11 @@ async function getBlogContent () {
       continue
     }
 
-    const result = await getAllBlocks(id).catch(err => {
-      if (err) throw err
-    })
+    const result = await loadChildren(
+      await getAllBlocks(id).catch(err => {
+        if (err) throw err
+      })
+    )
 
     const page = getAsSensiblyStructuredBlocks(getSupportedBlocks(result))
 

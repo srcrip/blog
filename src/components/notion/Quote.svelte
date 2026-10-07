@@ -23,6 +23,9 @@
   }, '')
 </script>
 
-<p class="text-sm whitespace-break-spaces border border-l-8 rounded-md p-4">
-  {text.trim()}
-</p>
+<div class="text-sm border border-l-8 rounded-md p-4">
+  {#if text.trim()}
+    <p class="whitespace-break-spaces">{text.trim()}</p>
+  {/if}
+  <slot />
+</div>

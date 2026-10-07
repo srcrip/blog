@@ -46,7 +46,11 @@
   {:else if block.type === 'divider'}
     <hr />
   {:else if block.type === 'quote'}
-    <Quote block={block.quote.text} />
+    <Quote block={block.quote.text}>
+      {#each block.children ?? [] as child}
+        <svelte:self block={child} />
+      {/each}
+    </Quote>
   {:else if block.type === 'callout'}
     <div class="flex gap-2 border bg-gray-100 rounded-md place-items-center px-2">
       <div class="text-xl w-[3em] h-[3em] grid place-content-center">
@@ -61,7 +65,7 @@
     <img class="mx-auto border rounded-md" src={block.embed.url} alt={block.embed?.caption[0]?.plain_text} />
     <p class="caption">{block.embed?.caption[0]?.plain_text}</p>
   {:else if block.type === 'image'}
-    <img class="mx-auto border rounded-md" src={block.image.external.url} alt={block.image?.caption[0]?.plain_text} />
+    <img class="mx-auto border rounded-md" src={block.image[block.image.type]?.url} alt={block.image?.caption[0]?.plain_text} />
     <p class="caption">{block.image?.caption[0]?.plain_text}</p>
   {:else}
     <!-- Type that needs to be added -->
